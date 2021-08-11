@@ -20,7 +20,7 @@ expected_ids = [
         "type": "user",
         "id": "cdl/f6d6816279e64b85bb2670cf04d5dfce"
     }],
-    ["9PD8DyAg2RFZJ3yoDLYJiapBl0yr71hDZN", {
+    ["p61vEp4g34Tqdjkm54p0f9Lg", {
         "service": "menu",
         "provider": "bamco",
         "type": "item",
