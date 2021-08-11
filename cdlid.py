@@ -29,6 +29,10 @@ def _from_hashid(s):
     return binascii.unhexlify(hex.encode("utf-8")).decode("utf-8")
 
 def encode(id):
+    """
+    Return the encoded id string.
+    The id parameter must be a dictionary with the following keys: service, provider, type, id.
+    """
     parts = []
     for key in ["service", "provider", "type"]:
         if key not in id:
@@ -46,6 +50,10 @@ def encode(id):
     return _to_hashid(".".join(parts))
 
 def decode(id):
+    """
+    Return the decoded id dictionary.
+    The id parameter must be a encoded id string.
+    """
     parts = _from_hashid(id).split(".")
     if len(parts) < 3 or len(parts) > 4:
         raise ValueError("invalid id: {}".format(id))
