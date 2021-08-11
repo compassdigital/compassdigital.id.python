@@ -2,8 +2,6 @@
 from hashids import Hashids
 import binascii
 
-_hashid = Hashids(salt = "Compass Digital")
-
 _short_to_long = {
     "L": "location",
     "M": "menu",
@@ -20,6 +18,8 @@ _long_to_short = {
     "order": "O"
 }
 
+_hashid = Hashids(salt = "Compass Digital")
+
 def _to_hashid(s):
     hex = binascii.hexlify(s.encode("utf-8")).decode("utf-8")
     return _hashid.encode_hex(hex)
@@ -28,10 +28,14 @@ def _from_hashid(s):
     hex = _hashid.decode_hex(s)
     return binascii.unhexlify(hex.encode("utf-8")).decode("utf-8")
 
-def encode(service, provider, type, id = None):
-    parts = [service, provider, type]
-    if id is not None:
-        parts.append(id)
+def encode(id):
+    parts = []
+    for key in ["service", "provider", "type"]:
+        if key not in id:
+            raise ValueError("missing property: {}".format(key))
+        parts.append(str(id[key]))
+    if "id" in id:
+        parts.append(str(id["id"]))
     for i, value in enumerate(parts):
         value = str(value).lower()
         if "." in value:
