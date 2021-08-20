@@ -25,6 +25,12 @@ expected_ids = [
         "provider": "bamco",
         "type": "item",
         "id": "1234",
+    }],
+    ["zdoQGQDE22ujg54oL83oty1B2Y1mJaUvO5ka9j7BfNy1w1", {
+        "service": "kds",
+        "provider": "cdl",
+        "type": "device",
+        "id": "GG7CPYMFMDG1"
     }]
 ]
 
