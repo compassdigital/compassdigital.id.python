@@ -41,11 +41,11 @@ def encode(id):
     if "id" in id:
         parts.append(str(id["id"]))
     for i, value in enumerate(parts):
-        value = str(value).lower()
+        value = str(value)
         if "." in value:
             raise ValueError("value cannot contain period: {}".format(value))
-        if value in _long_to_short:
-            value = _long_to_short[value]
+        if value.lower() in _long_to_short:
+            value = _long_to_short[value.lower()]
         parts[i] = value
     return _to_hashid(".".join(parts))
 
